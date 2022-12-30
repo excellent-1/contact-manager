@@ -4,7 +4,19 @@ import { Component } from '@angular/core';
   selector: 'app-buttons',
   template: `   
   <section>
+    <button mat-button>Basic</button>
+    
+    <button mat-button>
+      <mat-icon>face</mat-icon>
+      Click Me!
+    </button>
   </section>
+
+  <section class="">
+    <mat-checkbox class="">Check me!</mat-checkbox>
+    <mat-checkbox class="" [disabled]="true">Disabled</mat-checkbox>
+  </section>
+
 
   <div class="card-container">
     <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
