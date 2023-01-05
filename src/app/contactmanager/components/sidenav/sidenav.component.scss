@@ -16,10 +16,9 @@
 .app-sidenav-content {
     display: flex;
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .app-sidenav {
-    padding: 50px;
+    width: 245px;
 }
