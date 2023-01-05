@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
+  { path: 'contactmanager', loadChildren: () => import('./contactmanager/contactmanager.module').then(M => M.ContactmanagerModule) },
   { path: 'demo', loadChildren: () => import('./demo/demo.module').then(M => M.DemoModule) },
-  { path: '**', redirectTo: 'demo' }
+  { path: '**', redirectTo: 'contactmanager' }
+  //{ path: '**', redirectTo: 'demo' }
 ];
 
 @NgModule({
