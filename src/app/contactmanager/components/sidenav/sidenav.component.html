@@ -1,9 +1,10 @@
 <p>>>sidenav works! & has app-toolbar and router-outlet
-    Copy and Paste the mat-toolbar from sidenav.component into toolbar.component
+   
 </p>
 
 <mat-sidenav-container class="app-sidenav-container">
-    <mat-sidenav #sidenav mode="side" class="app-sidenav">
+    <mat-sidenav #sidenav mode="side" class="app-sidenav mat-elevation-z10" 
+                opened="true" mode="side">
         <mat-toolbar color="primary">
             Contacts
         </mat-toolbar>
@@ -18,6 +19,6 @@
     <div class="app-sidenav-content" >
         <app-toolbar></app-toolbar>
         <router-outlet></router-outlet>
-        <button type="button" mat-button (click)="(sidenav.opened) ? sidenav.close() : sidenav.open()"> Open Sidenav </button>
+        <button type="button" mat-button (click)="(sidenav.opened) ? sidenav.close() : sidenav.open()"> Open/Close Sidenav </button>
     </div>
 </mat-sidenav-container>
