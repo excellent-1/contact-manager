@@ -1,15 +1,21 @@
 <p>>>sidenav works! & has app-toolbar and router-outlet</p>
-<p>>>Copied SideNav from https://material.angular.io/ and moved the sidenave.component app-toolbar & router-outlet inside the mat-sidenav-container</p>
 
-<mat-sidenav-container class="example-container">
-    <!--<mat-sidenav #sidenav mode="side" opened class="example-sidenav">-->
-    <mat-sidenav #sidenav mode="side" class="example-sidenav">
-        Sidenav content
+<mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav #sidenav mode="side" class="app-sidenav">
+        <mat-toolbar color="primary">
+            Contacts
+        </mat-toolbar>
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+          
     </mat-sidenav>
-    <!--<mat-sidenav-content >Main content</mat-sidenav-content> -->
-    <div class="example-sidenav-content" >
+    
+    <div class="app-sidenav-content" >
         <app-toolbar></app-toolbar>
         <router-outlet></router-outlet>
-        <button type="button" mat-button (click)="sidenav.open()"> Open Sidenav </button>
+        <button type="button" mat-button (click)="(sidenav.opened) ? sidenav.close() : sidenav.open()"> Open Sidenav </button>
     </div>
 </mat-sidenav-container>
