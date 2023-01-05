@@ -4,7 +4,8 @@
 
 <mat-sidenav-container class="app-sidenav-container">
     <mat-sidenav #sidenav mode="side" class="app-sidenav mat-elevation-z10" 
-                opened="true" mode="side">
+                [opened]="!isScreenSmall" 
+                [mode]="isScreenSmall ? 'over' : 'side' ">
         <mat-toolbar color="primary">
             Contacts
         </mat-toolbar>
