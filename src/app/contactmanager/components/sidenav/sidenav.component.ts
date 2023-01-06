@@ -1,5 +1,8 @@
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit, NgZone } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { Observable } from 'rxjs';
+import { User } from '../../models/user';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -13,26 +16,36 @@ export class SidenavComponent implements OnInit {
   private mediaMatcher: MediaQueryList = 
       matchMedia( `(max-width: ${SMALL_WIDTH_BREAKPOINT}px )`);
 
-  //public isScreenSmall?: boolean;
+  public isScreenSmall?: boolean;
 
-  constructor(zone: NgZone, private breakPointObserver: BreakpointObserver) {
-    this.mediaMatcher.addListener(mql => 
-      //zone.run(() => this.mediaMatcher = mql)
-      zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`))
-      );
+  users?: Observable<User[]>;
+
+  constructor(
+    //zone: NgZone, 
+    private breakPointObserver: BreakpointObserver,
+    private userService: UserService
+  ) {
+      //this.mediaMatcher.addListener(mql => 
+        //zone.run(() => this.mediaMatcher = mql)
+        //zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)));
   }
 
   ngOnInit(): void {
-    //this.breakPointObserver
-      //.observe([ `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
+    this.breakPointObserver
+      .observe([ `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
       //.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
-      //.subscribe((state: BreakpointState) => {
-      //  this.isScreenSmall = state.matches;
-      //})
+      .subscribe((state: BreakpointState) => {
+        this.isScreenSmall = state.matches;
+      })
     //.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
+    this.users = this.userService.users;
+    this.userService.loadAll();
+    this.users.subscribe(data => {
+      console.log(data);
+    })
   }
 
-  isScreenSmall(): boolean {
+  /*isScreenSmall(): boolean {
     return this.mediaMatcher.matches;
-  }
+  }*/
 }
