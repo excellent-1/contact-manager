@@ -40,22 +40,9 @@ export class SidenavComponent implements OnInit {
     this.users = this.userService.getUsers; // supply user data for sidenav 
     this.userService.loadAll();
     
-    /*var index: number = 0;
-    this.userService.getUsers.forEach(dataRecord => {
-      console.log(`
-      data.id: ${dataRecord[index].id} \n 
-      data.birthDate: ${dataRecord[index].birthDate} \n
-      data.name: ${dataRecord[index].name} \n 
-      data.avatar: ${dataRecord[index].avatar} \n
-      data.bio: ${dataRecord[index].bio}`)
-    });*/
-
-    //this.userService.getUsers.subscribe(data => {
-    //  console.log(" In the SideNav " , data)
-    //});
+    this.userService.getUsers.subscribe(data => {
+      console.log(" In the SideNav " , data)
+    });
   }
 
-  /*isScreenSmall(): boolean {
-    return this.mediaMatcher.matches;
-  }*/
 }
