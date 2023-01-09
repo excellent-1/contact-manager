@@ -17,7 +17,12 @@ export class MainContentComponent implements OnInit {
   ngOnInit(): void { // Sidenav.Component loads the list with Users & user.id's for when the user is clicked you are routed to the ContactManager. In the ContactManager we Register's new root with a id to route to MainContentComponent who pulls the id. from the routeParams and pass it to this.userService.getUserById(id)
     this.route.params.subscribe(routeParams => {// from the routeParams and pass it to this.userService.getUserById(id)
       const id = routeParams['id'];
-      this.user = this.userService.getUserById(id);
+      
+      this.userService.getUsers.subscribe(userList => {
+        if(userList.length == 0) return;
+        this.user = this.userService.getUserById(id);
+      })
+      // this.user = this.userService.getUserById(id);
     })
   }
 }

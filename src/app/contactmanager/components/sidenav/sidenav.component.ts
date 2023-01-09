@@ -3,6 +3,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
+import { Router } from '@angular/router';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -21,9 +22,9 @@ export class SidenavComponent implements OnInit {
   users?: Observable<User[]>;
 
   constructor(
-    //zone: NgZone, 
     private breakPointObserver: BreakpointObserver,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
       //this.mediaMatcher.addListener(mql => 
         //zone.run(() => this.mediaMatcher = mql)
@@ -43,6 +44,11 @@ export class SidenavComponent implements OnInit {
     this.userService.getUsers.subscribe(data => {
       console.log(" In the SideNav " , data)
     });
+
+    this.users.subscribe(userList => {
+      if(userList.length > 0) // Select the first user in the list
+        this.router.navigate(['contactmanager', userList[0].id]);
+    })
   }
 
 }
