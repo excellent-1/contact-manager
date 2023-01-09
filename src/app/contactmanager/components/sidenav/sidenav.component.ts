@@ -36,33 +36,39 @@ export class SidenavComponent implements OnInit {
   theSideNav!: MatSidenav;
 
   ngOnInit(): void {
-    this.breakPointObserver
-      .observe([ `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
-      //.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
-      .subscribe((state: BreakpointState) => {
-        this.isScreenSmall = state.matches;
-      })
-    this.users = this.userService.getUsers; // supply user data for sidenav 
-    this.userService.loadAll();
-    
-    this.userService.getUsers.subscribe(data => {
-      console.log(" In the SideNav " , data)
-    });
+    try 
+    {
+      this.breakPointObserver
+        .observe([ `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
+        //.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
+        .subscribe((state: BreakpointState) => {
+          this.isScreenSmall = state.matches;
+        })
+      this.users = this.userService.getUsers; // supply user data for sidenav 
+      this.userService.loadAll();
+      
+      this.userService.getUsers.subscribe(data => {
+        console.log(" In the SideNav " , data)
+      });
 
-    this.users.subscribe(userList => {
-      if(userList.length > 0) // Select the first user in the list
-        this.router.navigate(['contactmanager', userList[0].id]);
-    });
+      this.users.subscribe(userList => {
+        if(userList.length > 0) // Select the first user in the list
+          this.router.navigate(['contactmanager', userList[0].id]);
+      });
 
-    this.router.events.subscribe( () => {
-      if(this.isScreenSmall) { // If we are on a small screen then close the sidenav by a referance
-        this.theSideNav.close(); 
-        console.log('Closing side nav for Small screen')       
-      } else {
-        this.theSideNav.open();
-        console.log('Opening side nav for Large screen') 
-      }
-    })
+      this.router.events.subscribe( () => {
+        if(this.isScreenSmall) { // If we are on a small screen then close the sidenav by a referance
+          this.theSideNav.close(); 
+          console.log('Closing side nav for Small screen')       
+        } else {
+          this.theSideNav.open();
+          console.log('Opening side nav for Large screen') 
+        }
+      });
+    } catch(err) {
+      console.log('Error in Sidenav: ' + err);
+    }
+
   } // END ngOnInit()
 
 }

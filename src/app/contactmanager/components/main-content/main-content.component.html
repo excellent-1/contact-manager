@@ -5,13 +5,13 @@
 <div *ngIf="user">
     <mat-card class="example-card">
         <mat-card-header>
-          <mat-icon mat-card-sm-image svgIcon="/src/assets/image{{user.id}}.jpg"></mat-icon>
+          <!--<mat-icon mat-card-sm-image svgIcon="/src/assets/image{{user.id}}.jpg"></mat-icon> -->
           <mat-card-title> <h2> {{user.name}} </h2></mat-card-title>
           <mat-card-subtitle>Birthday {{ user.birthDate | date:'d LLLL' }}</mat-card-subtitle>
         </mat-card-header>
         
         <mat-card-content>
-            <img width="77%" height="22%" 
+            <img width="333px" height="222px" 
                 mat-card-image src="http://localhost:4200/assets/image{{user.id}}.jpg" alt=""/>
             <p> {{user.bio}} </p>
 
