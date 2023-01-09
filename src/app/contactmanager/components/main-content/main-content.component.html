@@ -5,13 +5,22 @@
 <div *ngIf="user">
     <mat-card class="example-card">
         <mat-card-header>
+          <mat-icon mat-card-sm-image svgIcon="/src/assets/image{{user.id}}.jpg"></mat-icon>
           <mat-card-title> <h2> {{user.name}} </h2></mat-card-title>
           <mat-card-subtitle>Birthday {{ user.birthDate | date:'d LLLL' }}</mat-card-subtitle>
         </mat-card-header>
         
         <mat-card-content>
-            <img mat-card-image src="http://localhost:4200/assets/image{{user.id}}.jpg" alt=""/>
+            <img width="77%" height="22%" 
+                mat-card-image src="http://localhost:4200/assets/image{{user.id}}.jpg" alt=""/>
             <p> {{user.bio}} </p>
+
+            <mat-tab-group>
+                <mat-tab label="Bio"> <p> {{user.bio}} </p> </mat-tab>
+                <mat-tab label="Birthday"> <p> {{user.birthDate}} </p> </mat-tab>
+                <mat-tab label="Notes"> <p> {{user.listOfNotes?.at(0)}} </p> </mat-tab>
+            </mat-tab-group>
+
         </mat-card-content>
         <!--<mat-card-actions>
           <button mat-button>LIKE</button>

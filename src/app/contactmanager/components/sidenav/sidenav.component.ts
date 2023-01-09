@@ -1,9 +1,10 @@
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -31,6 +32,9 @@ export class SidenavComponent implements OnInit {
         //zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)));
   }
 
+  @ViewChild(MatSidenav)
+  theSideNav!: MatSidenav;
+
   ngOnInit(): void {
     this.breakPointObserver
       .observe([ `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
@@ -48,7 +52,17 @@ export class SidenavComponent implements OnInit {
     this.users.subscribe(userList => {
       if(userList.length > 0) // Select the first user in the list
         this.router.navigate(['contactmanager', userList[0].id]);
+    });
+
+    this.router.events.subscribe( () => {
+      if(this.isScreenSmall) { // If we are on a small screen then close the sidenav by a referance
+        this.theSideNav.close(); 
+        console.log('Closing side nav for Small screen')       
+      } else {
+        this.theSideNav.open();
+        console.log('Opening side nav for Large screen') 
+      }
     })
-  }
+  } // END ngOnInit()
 
 }
