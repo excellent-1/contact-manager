@@ -18,6 +18,7 @@ const routes: Routes = [
   { 
     path: '', component: ContactmanagerAppComponent,
     children: [
+      { path: ':id', component: MainContentComponent }, // Register new root with a id to route to MainContentComponent
       { path: '', component: MainContentComponent }
     ] 
   },

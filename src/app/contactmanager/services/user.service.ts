@@ -7,6 +7,13 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
+  
+  getUserById(id: any): User { // Since this.dataStore.users contains all the users, just find user of interest by UserId  
+    return this.dataStore.users.find(
+      (U: { id: any; }) => {
+        return U.id == id;
+      });
+  }
 
   private _users: BehaviorSubject<User[]>;
   
