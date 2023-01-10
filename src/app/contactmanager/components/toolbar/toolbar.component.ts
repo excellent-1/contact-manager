@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ToolbarComponent {
   
   @Output() toggleSidenav: EventEmitter<void> = new EventEmitter<void>(); // function call
+  @Output() toggleThemeOutputEventEmitter: EventEmitter<void> = new EventEmitter<void>();
   
   constructor(private dialog: MatDialog, private snackBar: MatSnackBar,
       private router: Router) {}

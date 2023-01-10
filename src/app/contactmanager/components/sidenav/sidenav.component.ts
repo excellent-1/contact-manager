@@ -14,14 +14,7 @@ const SMALL_WIDTH_BREAKPOINT = 720;
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-
-  private mediaMatcher: MediaQueryList = 
-      matchMedia( `(max-width: ${SMALL_WIDTH_BREAKPOINT}px )`);
-
-  public isScreenSmall?: boolean;
-
-  users?: Observable<User[]>;
-
+  
   constructor(
     private breakPointObserver: BreakpointObserver,
     private userService: UserService,
@@ -31,8 +24,15 @@ export class SidenavComponent implements OnInit {
         //zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)));
   }
 
-  @ViewChild(MatSidenav)
-  theSideNav!: MatSidenav;
+  private mediaMatcher: MediaQueryList = matchMedia( `(max-width: ${SMALL_WIDTH_BREAKPOINT}px )`);
+  public isScreenSmall?: boolean;
+  users?: Observable<User[]>;
+  isDarkTheme: boolean = false;
+  @ViewChild(MatSidenav) theSideNav!: MatSidenav;
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;    
+  }
 
   ngOnInit(): void {
     try 
@@ -58,7 +58,7 @@ export class SidenavComponent implements OnInit {
         if(this.isScreenSmall) { // If we are on a small screen then close the sidenav by a referance
           this.theSideNav.close(); 
           console.log('Closing side nav for Small screen')       
-        } else {
+        } else { 
           this.theSideNav.open();
           console.log('Opening side nav for Large screen') 
         }

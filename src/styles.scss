@@ -16,9 +16,9 @@ $beautiful-app-theme: materialCommonStyles.define-light-theme(
 @include materialCommonStyles.all-component-themes($beautiful-app-theme);
 
 .dark-theme {
-    $primary-dark: materialCommonStyles.define-palette(materialCommonStyles.$pink-palette, 700);
-    $accent-dark: materialCommonStyles.define-palette(materialCommonStyles.$green-palette);
-    $warn-dark: materialCommonStyles.define-palette(materialCommonStyles.$red-palette);
+    $primary-dark: materialCommonStyles.define-palette(materialCommonStyles.$orange-palette, 900);
+    $accent-dark: materialCommonStyles.define-palette(materialCommonStyles.$red-palette, 300, 700, 900);
+    $warn-dark: materialCommonStyles.define-palette(materialCommonStyles.$indigo-palette, 900);
 
     $theme-dark: materialCommonStyles.define-dark-theme(
                 $primary-dark, $accent-dark, $warn-dark);
