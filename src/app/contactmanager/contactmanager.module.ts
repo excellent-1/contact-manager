@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from '../shared/material.module';
@@ -33,6 +33,7 @@ const routes: Routes = [
     CommonModule, HttpClientModule,
     MaterialModule, FormsModule, 
     //FlexLayoutModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   providers: [

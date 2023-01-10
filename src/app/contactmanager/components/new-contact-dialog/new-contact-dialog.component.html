@@ -6,9 +6,9 @@
         <mat-label>Avatar</mat-label>
         <mat-select [(ngModel)]="user.avatar">
           <mat-select-trigger>
-            <mat-icon svgIcon="{{user.avatar}}"> {{user.avatar}} </mat-icon>
+            <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{user.avatar}}
           </mat-select-trigger>
-          <mat-option *ngFor="let avatar of avatars" value="avatar">
+          <mat-option *ngFor="let avatar of avatars" [value]="avatar">
             <mat-icon svgIcon="{{avatar}}"></mat-icon> {{avatar}}
           </mat-option>
         </mat-select>
@@ -17,13 +17,23 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="user.name" required />
+        <input title="name" matInput [formControl]="name" required />
+        <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
       <br>
 
       <mat-form-field appearance="fill">
+        <mat-label>Date Born</mat-label>
+        <input title="picker" matInput [matDatepicker]="picker" [(ngModel)]="user.birthDate" >
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>      
+
+      <mat-form-field appearance="fill">
         <mat-label>Bio</mat-label>
-        <textarea matInput [(ngModel)]="user.bio"></textarea>
+        <textarea title="bio" matInput [(ngModel)]="user.bio"></textarea>
       </mat-form-field>
   </div>      
 </mat-dialog-content>
