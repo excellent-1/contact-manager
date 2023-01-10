@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ReflectiveInjector } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from '../../models/user';
@@ -31,9 +31,12 @@ export class NewContactDialogComponent implements OnInit {
     this.userService.addUser(this.user).then(returnedUser => {
       //if(saveSuccessful == false) => 'We failed to save'
       this.dialogRef.close(returnedUser); // TODO if form is invalid don't close the dialogRef
+    }, err => {
+       // Keep the dialog open
+       console.log('Error, will keep the dialog open to save data');
     })
   }
-      
+
   dismiss() { this.dialogRef.close(null);  }
 
 }
