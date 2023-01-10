@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-new-contact-dialog',
@@ -14,7 +15,8 @@ export class NewContactDialogComponent implements OnInit {
     ,'svg-12','svg-13','svg-14'];
   user: User = new User();
 
-  constructor(private dialogRef: MatDialogRef<NewContactDialogComponent>)
+  constructor(private dialogRef: MatDialogRef<NewContactDialogComponent>,
+    private userService: UserService)
   {}
 
   name = new FormControl('', [Validators.required]);
@@ -26,8 +28,12 @@ export class NewContactDialogComponent implements OnInit {
 
   saveNewContact() {  
     this.user.name = this.name.value ?? "";
-    this.dialogRef.close(this.user);  } // TODO if form is invalid don't close the dialogRef
-
+    this.userService.addUser(this.user).then(returnedUser => {
+      //if(saveSuccessful == false) => 'We failed to save'
+      this.dialogRef.close(returnedUser); // TODO if form is invalid don't close the dialogRef
+    })
+  }
+      
   dismiss() { this.dialogRef.close(null);  }
 
 }

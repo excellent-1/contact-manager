@@ -8,6 +8,16 @@ import { User } from '../models/user';
 })
 export class UserService {
   
+  addUser(user: User): Promise<User> {
+    // A Promise is an object that may produce a single value, sometime in the future, but can only handle a Single Emittion that cannot be cancel.
+    return new Promise((resolver, reject) => {
+      user.id = this.dataStore.users.length + 1;
+      this.dataStore.users.push(user);
+      this._users.next(Object.assign({}, this.dataStore).users);
+      resolver(user);
+    })
+  }
+  
   getUserById(id: any): User { // Since this.dataStore.users contains all the users, just find user of interest by UserId  
     return this.dataStore.users.find(
       (U: { id: any; }) => {
