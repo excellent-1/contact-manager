@@ -23,6 +23,7 @@ export class MainContentComponent implements OnInit {
         this.user = this.userService.getUserById(id);
       })
       // this.user = this.userService.getUserById(id);
+      console.log('In main-content this.user?.listOfNotes: ' + this.user?.notes)
     })
   }
 }

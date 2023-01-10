@@ -7,5 +7,7 @@ export class User {
     avatar?: string;
     bio?: string;
 
-    listOfNotes?: Note[] = [];
+    notes?: Note[] = [];
 }
+// My User data points MUST be named the same as the JSON data-points to avoid UNDEFINED error messages 
+// that will stop that certain data-point from getting populated

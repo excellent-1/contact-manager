@@ -11,14 +11,17 @@
         </mat-card-header>
         
         <mat-card-content>
-            <img width="333px" height="222px" 
+            <img width="222px" height="111px" 
                 mat-card-image src="http://localhost:4200/assets/image{{user.id}}.jpg" alt=""/>
             <p> {{user.bio}} </p>
 
             <mat-tab-group>
                 <mat-tab label="Bio"> <p> {{user.bio}} </p> </mat-tab>
                 <mat-tab label="Birthday"> <p> {{user.birthDate}} </p> </mat-tab>
-                <mat-tab label="Notes"> <p> {{user.listOfNotes?.at(0)}} </p> </mat-tab>
+                <mat-tab label="Notes"> 
+                    <p> {{user.notes?.at(0)}} </p> 
+                    <app-notes [notes]="user.notes"></app-notes>
+                </mat-tab>
             </mat-tab-group>
 
         </mat-card-content>

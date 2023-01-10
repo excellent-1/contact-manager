@@ -47,7 +47,8 @@ export class UserService {
         
         data.forEach(dataRecord => { 
           console.log(`data.id: ${dataRecord.id} \n data.birthDate: ${dataRecord.birthDate} \n
-          data.name: ${dataRecord.name} \n data.avatar: ${dataRecord.avatar} \n data.bio: ${dataRecord.bio}`)   
+          data.name: ${dataRecord.name} \n data.avatar: ${dataRecord.avatar} \n data.bio: ${dataRecord.bio}
+          \n data.notes ${dataRecord.notes}`)   
         });
         
       } ,
