@@ -3,7 +3,6 @@
                 [opened]="isScreenSmall==false" 
                 [mode]="isScreenSmall ? 'over' : 'side' "
                 >
-                <!--[mode]="isScreenSmall ? 'over' : 'side' "-->
         <mat-toolbar color="primary">
             Contacts
         </mat-toolbar>
@@ -11,9 +10,7 @@
         <mat-nav-list>
             <mat-list-item *ngFor="let user of users | async " >
                 <a matLine [routerLink]="['/contactmanager', user.id]">
-                    <!--<mat-icon>face</mat-icon> {{user.name}}-->
                     <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{user.name}}
-                    <!--<img mat-card-image width=33px height="33px" src="http://localhost:4200/src/assets/image{{user.id}}.jpg" alt=""> -->
                 </a>
             </mat-list-item>
         </mat-nav-list>

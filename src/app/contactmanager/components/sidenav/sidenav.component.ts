@@ -26,8 +26,7 @@ export class SidenavComponent implements OnInit {
     private breakPointObserver: BreakpointObserver,
     private userService: UserService,
     private router: Router
-  ) {
-      //this.mediaMatcher.addListener(mql => 
+  ) { //this.mediaMatcher.addListener(mql => 
         //zone.run(() => this.mediaMatcher = mql)
         //zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)));
   }
@@ -39,8 +38,7 @@ export class SidenavComponent implements OnInit {
     try 
     {
       this.breakPointObserver
-        .observe([ `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])
-        //.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
+        .observe([ `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`])  //.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
         .subscribe((state: BreakpointState) => {
           this.isScreenSmall = state.matches;
         })
