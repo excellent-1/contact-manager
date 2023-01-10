@@ -4,4 +4,15 @@
         <mat-icon>menu</mat-icon>
     </button>
     <span> Toolbar: Contact Manager </span>
+
+    <span class="example-spacer"></span>
+    
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon border_all aria-label="Drop down menu">arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openAddNewContactDialog()" >Add New Contact</button>
+        <!--<button mat-menu-item>Item 2</button>-->
+    </mat-menu>
+
 </mat-toolbar>
