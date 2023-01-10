@@ -7,7 +7,7 @@
         <mat-card-header>
           <!--<mat-icon mat-card-sm-image svgIcon="/src/assets/image{{user.id}}.jpg"></mat-icon> -->
           <mat-card-title> <h2> {{user.name}} </h2></mat-card-title>
-          <mat-card-subtitle>Birthday {{ user.birthDate | date:'d LLLL' }}</mat-card-subtitle>
+          <!--<mat-card-subtitle>Birthday {{ user.birthDate | date:'d LLLL' }}</mat-card-subtitle>-->
         </mat-card-header>
         
         <mat-card-content>
@@ -22,10 +22,10 @@
                 </mat-tab>
                 <mat-tab label="Birthday"> 
                     <ng-template mat-tab-label> <mat-icon>cake</mat-icon> Birthday </ng-template>
-                    <p> {{user.birthDate}} </p>
+                    <p> {{user.birthDate | date:'d LLLL'}} </p>
                 </mat-tab>
                 <mat-tab label="Notes"> 
-                    <ng-template mat-tab-label> <mat-icon>notes</mat-icon> Notes </ng-template>
+                    <ng-template mat-tab-label> <mat-icon>notes</mat-icon> Notes Table </ng-template>
                     <app-notes [notes]="user.notes"></app-notes>
                 </mat-tab>
             </mat-tab-group>
