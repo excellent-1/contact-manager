@@ -1,1 +1,32 @@
-<p>new-contact-dialog works!</p>
+<h2 mat-dialog-title>Add New Contact</h2>
+<mat-dialog-content>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+        <mat-label>Input</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+  </div>      
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button color="primary" (click)="saveNewContact()" [mat-dialog-close]="true">
+    Save
+  </button>
+  <button mat-button mat-dialog-close>
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+  
+</mat-dialog-actions>

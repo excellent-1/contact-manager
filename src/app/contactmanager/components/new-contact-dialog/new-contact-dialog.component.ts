@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NewContactDialogComponent {
 
+  saveNewContact() {
+    throw new Error('Method not implemented.');
+  }
+
 }
