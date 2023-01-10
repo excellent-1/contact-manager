@@ -13,9 +13,9 @@ export class ToolbarComponent {
   
   @Output() toggleSidenav: EventEmitter<void> = new EventEmitter<void>(); // function call
   @Output() toggleThemeOutputEventEmitter: EventEmitter<void> = new EventEmitter<void>();
+  @Output() toggleDirectionOutputEventEmitter: EventEmitter<void> = new EventEmitter<void>();
   
-  constructor(private dialog: MatDialog, private snackBar: MatSnackBar,
-      private router: Router) {}
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit() {
 

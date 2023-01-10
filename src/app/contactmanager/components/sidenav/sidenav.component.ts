@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Direction, Directionality } from '@angular/cdk/bidi';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -14,26 +15,29 @@ const SMALL_WIDTH_BREAKPOINT = 720;
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  
-  constructor(
+
+  constructor( zone: NgZone,
     private breakPointObserver: BreakpointObserver,
     private userService: UserService,
     private router: Router
-  ) { //this.mediaMatcher.addListener(mql => 
-        //zone.run(() => this.mediaMatcher = mql)
-        //zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)));
+  ) {  //this.mediaMatcher.addListener(mql => zone.run(() => this.mediaMatcher = mql)
+      zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`));
   }
 
   private mediaMatcher: MediaQueryList = matchMedia( `(max-width: ${SMALL_WIDTH_BREAKPOINT}px )`);
   public isScreenSmall?: boolean;
   users?: Observable<User[]>;
   isDarkTheme: boolean = false;
+  isDirectionRtl: Direction = 'rtl';
   @ViewChild(MatSidenav) theSideNav!: MatSidenav;
 
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;    
   }
-
+  toggleDirection() {
+    this.isDirectionRtl = this.isDirectionRtl == 'rtl' ? 'ltr' : 'rtl';
+  }
+      
   ngOnInit(): void {
     try 
     {
