@@ -1,6 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css'; // Moved from angular.json to here
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css'; // Moved from angular.json to here
 
 //@import '@angular/material/prebuilt-themes/'; // Moved from angular.json to here
+
+@use '@angular/material' as materialCommonStyles;
+@include materialCommonStyles.core();
+
+$beautiful-app-primary: materialCommonStyles.define-palette(materialCommonStyles.$indigo-palette);
+$beautiful-app-accent: materialCommonStyles.define-palette(materialCommonStyles.$pink-palette, A200, A100, A400);
+$beautiful-app-warn: materialCommonStyles.define-palette(materialCommonStyles.$red-palette);
+
+$beautiful-app-theme: materialCommonStyles.define-light-theme(
+    $beautiful-app-primary, $beautiful-app-accent, $beautiful-app-warn);
+
+@include materialCommonStyles.all-component-themes($beautiful-app-theme);
+
+.dark-theme {
+    $primary-dark: materialCommonStyles.define-palette(materialCommonStyles.$pink-palette, 700);
+    $accent-dark: materialCommonStyles.define-palette(materialCommonStyles.$green-palette);
+    $warn-dark: materialCommonStyles.define-palette(materialCommonStyles.$red-palette);
+
+    $theme-dark: materialCommonStyles.define-dark-theme(
+                $primary-dark, $accent-dark, $warn-dark);
+    @include materialCommonStyles.all-component-themes($theme-dark);
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
