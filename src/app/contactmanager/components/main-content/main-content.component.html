@@ -13,13 +13,19 @@
         <mat-card-content>
             <img width="222px" height="111px" 
                 mat-card-image src="http://localhost:4200/assets/image{{user.id}}.jpg" alt=""/>
-            <p> {{user.bio}} </p>
+            <!--<p> {{user.bio}} </p>-->
 
             <mat-tab-group>
-                <mat-tab label="Bio"> <p> {{user.bio}} </p> </mat-tab>
-                <mat-tab label="Birthday"> <p> {{user.birthDate}} </p> </mat-tab>
+                <mat-tab label="Bio" matTooltip="See the user's Bio"> 
+                    <ng-template mat-tab-label> <mat-icon>work_outline</mat-icon> Bio </ng-template>
+                    <p> {{user.bio}} </p> 
+                </mat-tab>
+                <mat-tab label="Birthday"> 
+                    <ng-template mat-tab-label> <mat-icon>cake</mat-icon> Birthday </ng-template>
+                    <p> {{user.birthDate}} </p>
+                </mat-tab>
                 <mat-tab label="Notes"> 
-                    <p> {{user.notes?.at(0)}} </p> 
+                    <ng-template mat-tab-label> <mat-icon>notes</mat-icon> Notes </ng-template>
                     <app-notes [notes]="user.notes"></app-notes>
                 </mat-tab>
             </mat-tab-group>
