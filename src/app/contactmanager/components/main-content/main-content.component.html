@@ -5,14 +5,14 @@
 <div *ngIf="user">
     <mat-card class="example-card">
         <mat-card-header>
-          <!--<mat-icon mat-card-sm-image svgIcon="/src/assets/image{{user.id}}.jpg"></mat-icon> -->
+          <!--<mat-icon svgIcon="{{user.avatar}}"></mat-icon>-->
           <mat-card-title> <h2> {{user.name}} </h2></mat-card-title>
-          <!--<mat-card-subtitle>Birthday {{ user.birthDate | date:'d LLLL' }}</mat-card-subtitle>-->
         </mat-card-header>
         
         <mat-card-content>
             <img width="222px" height="111px" 
-                mat-card-image src="http://localhost:4200/assets/image{{user.id}}.jpg" alt=""/>
+                mat-card-image src="/assets/image{{user.id}}.jpg" alt=""/>
+               <!-- https://angular15contactmgr.azurewebsites.net/contact-manager/assets/image1.jpg -->
             <!--<p> {{user.bio}} </p>-->
 
             <mat-tab-group>
